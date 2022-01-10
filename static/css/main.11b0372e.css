@@ -1,0 +1,2 @@
+*{background-color:#eceff1;font-family:Roboto Mono,monospace;margin:0;padding:0}#root,body,html{height:100%}.app-container{display:flex;flex-direction:row;height:100%;width:100%}.input-box-container{flex-direction:column}.display-box-container,.input-box-container{display:flex;flex:1 1;height:100%;margin:0 10px}.display-box-container{flex-direction:column}.display-textarea,.raw-input-textarea{flex:1 1;resize:none}.display-textarea{border:none}.display-markdown{flex:1 1;resize:none}
+/*# sourceMappingURL=main.11b0372e.css.map*/
