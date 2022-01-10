@@ -2,7 +2,7 @@
   "name": "noteapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://wenjalan.github.io/noteapp",
+  "homepage": "https://wenjalan.github.io/NoteApp",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
