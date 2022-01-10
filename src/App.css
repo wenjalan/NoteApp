@@ -36,3 +36,10 @@
   flex: 1;
   resize: none;
 }
+
+.caret {
+  position: absolute;
+  height: 1em;
+  width: 1ex;
+  background-color: gray;
+}
