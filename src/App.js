@@ -3,10 +3,11 @@ import './App.css';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
+import TextArea from './TextArea';
 
 // Main App Component
 function App() {
-  return (<MarkdownTest />);
+  return (<TextArea />);
 }
 
 // Markdown Side-by-Side Demo
