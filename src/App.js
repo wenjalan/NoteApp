@@ -21,7 +21,6 @@ function MarkdownTest() {
   // component
   return (
     <div className="app-container">
-      <Caret/>
       <InputBox setInputPosition={setInputPosition} setInput={setInput}/>
       <DisplayBox text={input}/>
     </div>
@@ -60,22 +59,51 @@ function InputBox(props) {
 // Markdown Display Box
 function DisplayBox(props) {
   const text = props.text;
+  
+  // render the caret
+  useEffect(() => {
+    // get the display markdown
+    const displayMarkdown = document.getElementsByClassName('display-markdown')[0];
+
+    // if there are no children, draw caret at beginning
+    if (!displayMarkdown.lastChild) {
+      const displayMarkdownBoundingBox = displayMarkdown.getBoundingClientRect();
+      const newCaret = document.createElement('span');
+      newCaret.className = 'caret';
+      newCaret.style.top = displayMarkdownBoundingBox.top + 'px';
+      newCaret.style.left = displayMarkdownBoundingBox.left + 'px';
+      displayMarkdown.appendChild(newCaret);
+    }
+    // otherwise, draw caret at end of last child
+    else {
+      // set width of all children to fit-content
+      for (let i = 0; i < displayMarkdown.children.length; i++) {
+        displayMarkdown.children[i].style.width = 'fit-content';
+      }
+
+      // remove previous caret
+      const caret = document.getElementsByClassName('caret')[0];
+      if (caret) {
+        displayMarkdown.removeChild(caret);
+      }
+
+      // create a new caret
+      const lastChildBoundingBox = displayMarkdown.lastChild.getBoundingClientRect();
+      const newCaret = document.createElement('span');
+      newCaret.className = 'caret';
+      newCaret.style.top = lastChildBoundingBox.top + 'px';
+      newCaret.style.left = lastChildBoundingBox.right + 'px';
+      newCaret.style.height = lastChildBoundingBox.height + 'px';
+      displayMarkdown.appendChild(newCaret);
+    }
+  }, [text]);
+
   return (
     <div className="display-box-container">
       <h1>Display</h1>
-      <ReactMarkdown className="display-markdown">
-        {text}
-      </ReactMarkdown>
+      <ReactMarkdown className="display-markdown" children={text} />
     </div>
   )
-}
-
-// Caret
-// TODO: Make the caret render at the correct position on the DisplayBox
-function Caret() {
-  return (
-    <span className='caret'/>
-  );
 }
 
 export default App;
